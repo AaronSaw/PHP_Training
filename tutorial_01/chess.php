@@ -9,19 +9,17 @@
 </head>
 
 <body>
-
     <h1>Chess</h1>
-    <table  cellspacing="0px" cellpadding="0px" style="border: 3px solid ;">
-
+    <table cellspacing="0px" cellpadding="0px">
         <?php
         for ($row = 1; $row <= 8; $row++) {
             echo "<tr>";
             for ($col = 1; $col <= 8; $col++) {
                 $total = $row + $col;
                 if ($total % 2 == 0) {
-                    echo "<td height=50px width=50px bgcolor=#FFFFFF></td>";
+                    echo "<td class='white'></td>";
                 } else {
-                    echo "<td height=50px width=50px bgcolor=#000000></td>";
+                    echo "<td class='black'></td>";
                 }
             }
             echo "</tr>";
