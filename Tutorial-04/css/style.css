@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  background: #dde1e7;
+  text-align: center;
+  place-items: center;
+}
+
+.content {
+  width: 330px;
+  padding: 40px 30px;
+  box-shadow: -3px -3px 7px #ffffff73,
+    2px 2px 5px rgba(94, 104, 121, 0.288);
+  background: #dde1e7;
+  border-radius: 10px;
+}
+
+.content .text {
+  margin-bottom: 35px;
+  color: #000;
+  font-size: 33px;
+  font-weight: 600;
+}
+
+.content .field {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 20px !important;
+}
+
+.field input {
+  width: 100%;
+  height: 100%;
+  padding-left: 45px;
+  border: none;
+  box-shadow: inset 2px 2px 5px #babecc,
+    inset -5px -5px 10px #ffffff73;
+  background: #dde1e7;
+  color: #595959;
+  font-size: 18px;
+  outline: none;
+  border-radius: 25px;
+}
+
+.field input:focus~label {
+  box-shadow: inset 2px 2px 5px #babecc,
+    inset -1px -1px 2px #ffffff73;
+}
+
+.field:nth-child(2) {
+  margin-top: 20px;
+}
+
+.field span {
+  position: absolute;
+  width: 50px;
+  line-height: 50px;
+  color: #595959;
+}
+
+.field label {
+  position: absolute;
+  top: 50%;
+  left: 45px;
+  color: #666666;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.field input:focus~label {
+  opacity: 0;
+}
+
+.forgot-pass {
+  margin: 10px 0 10px 5px;
+  text-align: left;
+}
+
+.forgot-pass a {
+  color: #3498db;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.forgot-pass:hover a {
+  text-decoration: underline;
+}
+
+button {
+  width: 100%;
+  height: 50px;
+  margin: 15px 0;
+  border: none;
+  box-shadow: 2px 2px 5px #babecc,
+    -5px -5px 10px #ffffff73;
+  background: #dde1e7;
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+button:focus {
+  box-shadow: inset 2px 2px 5px #babecc,
+    inset -5px -5px 10px #ffffff73;
+  color: #3498db;
+}
+
+.signup {
+  margin: 10px 0;
+  color: #595959;
+  font-size: 16px;
+}
+
+.signup a {
+  color: #000;
+  text-decoration: none;
+}
+
+.signup a:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: #ff0000 !important;
+}
+
+.warning {
+  padding: 20px;
+  border: 5px;
+  background-color: rgba(255, 155, 137, 0.728);
+  color: red;
+}
