@@ -22,10 +22,9 @@
         $birthday = date_diff($today, $bdday);
         return "<h4>Your age is : <span>$birthday->y  years  $birthday->m  months $birthday->d days</span> </h4>";
     }
-    ?>
-    <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $name = "<h4>Name : <span>" . $_POST['user'] . "</span> </h4>";
+        $user = $_POST['user'];
+        $oldDate = $_POST['date'];
         $bdday = new DateTime($_POST['date']);
         $today = new DateTime(date('d.m.y'));
         if (empty($_POST["date"])) {
@@ -35,6 +34,9 @@
             $dateErr = "Plase choose correct date!";
         } else
               if ($bdday < $today) {
+            $user = " ";
+            $oldDate = " ";
+            $name = "<h4>Name : <span>" . $_POST['user'] . "</span> </h4>";
             $age = age($today, $bdday);
         }
     }
@@ -42,8 +44,8 @@
     <div class="card">
         <h1>Age Calculator</h1>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-            <input type="text" placeholder="Your Name" name="user" required><br>
-            <input type="date" name="date"><br>
+            <input type="text" placeholder="Your Name" name="user" required value="<?php echo $user; ?>"><br>
+            <input type="date" name="date" value="<?php echo $oldDate; ?>"><br>
             <?php echo "<p class='error'>$dateErr </p>"; ?>
             <button name="submit">submit</button>
         </form>
