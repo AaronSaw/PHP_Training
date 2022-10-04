@@ -30,10 +30,10 @@
         if (empty($_POST["date"])) {
             $dateErr = "Plase choose date!";
         } else
-              if ($bdday > $today || $bdday == $today) {
-            $dateErr = "Plase choose correct date!";
-        } else
-              if ($bdday < $today) {
+              if ($bdday >$today || date_diff($today, $bdday)->d==0) {
+              $dateErr = "Plase choose correct date!";
+        } else{
+          
             $user = " ";
             $oldDate = " ";
             $name = "<h4>Name : <span>" . $_POST['user'] . "</span> </h4>";

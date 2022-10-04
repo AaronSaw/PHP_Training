@@ -6,23 +6,37 @@ $temFile = $_FILES['upload']['tmp_name'];
 $temName = $_FILES['upload']['name'];
 $image = $_FILES['upload']['type'];
 $folderName = $_POST['folderName'];
+/**
+ * Show the application dashboard
+ *
+ * @param $temFile
+ * @param $temName
+ * @param $image
+ * @param $folderName
+ * @return true
+ */
 function run($temFile, $temName, $image, $folderName)
 {
     foreach ($temFile as $key => $tf) {
-        if ($_FILES['upload']['size'][$key] == 0) {
+        if ($_FILES['upload']['size'][$key] == 0 && empty($_POST['folderName'])) {
+            $error = 'PLease choose something!';
+            $folderErr = 'Please fill folder name!';
+            header("location:index.php?error=$error&&folderErr=$folderErr");
+        } else if ($_FILES['upload']['size'][$key] == 0) {
             $error = 'Please choose something!';
-            header("location:index.php?error=$error");
-        } else
-if (!($image[$key] == 'image/jpeg' || $image[$key] == 'image/jpg' || $image[$key] == 'image/png')) {
+            header("location:index.php?error=$error&&folder=$folderName");
+        } else if (!($image[$key] == 'image/jpeg' || $image[$key] == 'image/jpg' || $image[$key] == 'image/png') && empty($_POST['folderName'])) {
             $error = 'Please choose only image!';
-            header("location:index.php?error=$error");
-        } else
-if (empty($_POST['folderName'])) {
-            $folderErr = 'Please  fill folder !';
+            $folderErr = 'Please fill folder name!';
+            header("location:index.php?error=$error&&folderErr=$folderErr");
+        } else if (!($image[$key] == 'image/jpeg' || $image[$key] == 'image/jpg' || $image[$key] == 'image/png')) {
+            $error = 'Please choose only image!';
+            header("location:index.php?error=$error&&folder=$folderName");
+        } else if (empty($_POST['folderName'])) {
+            $folderErr = 'Please  fill folder name!';
             $fileName = $_FILES['upload'][''];
             header("location:index.php?folderErr=$folderErr&selectedImg=$fileName");
         } else {
-
             $folder = mkdir($folderName);
             $storeFolder = $folderName . '/';
             move_uploaded_file($temFile[$key], $storeFolder . uniqid() . "_" . $temName[$key]);
@@ -32,6 +46,7 @@ if (empty($_POST['folderName'])) {
 run($temFile, $temName, $image, $folderName);
 $store = scandir($folderName);
 ?>
+
 <div class="gallery-bar">
     <h1><?php echo $folderName; ?> Folder</h1>
     <a href="index.php?folder=<?php echo $folderName; ?>"> add image</a>
