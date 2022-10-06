@@ -13,19 +13,19 @@ form {
 }
 
 input {
-  padding: 10px;
-  margin-top: 10px;
   width: 100%;
+  margin-top: 10px;
+  padding: 10px;
   border-radius: 10px;
 }
 
 label {
+  float: left;
+  color: blue;
   /* margin-bottom: 10px; */
   font-size: 20px;
   /* margin-bottom: 10px !important; */
   font-weight: bold;
-  color: blue;
-  float: left;
 }
 
 textarea {
@@ -58,11 +58,12 @@ table {
 
 td {
   padding: 20px;
-
+  white-space: pre !important;
 }
 
 a {
   margin-top: 10px;
+  margin-right: 5px;
   padding: 5px 10px;
   background: white;
   text-decoration: none;
@@ -115,4 +116,8 @@ h2 {
 
 span {
   margin-top: 10px;
+}
+
+textarea {
+  white-space: pre;
 }

@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="css/style.css">
 <?php
 require "function/function.php";
+//createTable();//your call this function only one
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $name = trim($name);
@@ -33,7 +34,7 @@ if (isset($_POST['submit'])) {
         && (!strlen($name) == 0)  && (!strlen($room) == 0) && (!strlen($address) == 0)
         && preg_match("/^[a-zA-Z-' ]*$/", $_POST['name']) && preg_match("/^[a-zA-Z-' ]*$/", $_POST['room'])
     ) {
-        studentAdd();
+         studentAdd();
     }
 }
 ?>
@@ -65,35 +66,4 @@ if (isset($_POST['submit'])) {
         <button name="submit">create</button>
     </form>
     <!--show table -->
-    <table border="1" cellspacing="0px" cellpadding="0px">
-        <thead>
-            <th>#</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Gender</th>
-            <th>Room</th>
-            <th>Adress</th>
-            <th>Action</th>
-        </thead>
-        <tbody>
-            <?php
-            foreach (students() as $c) {
-            ?>
-                <tr>
-                    <td><?php echo $c['id'] ?></td>
-                    <td><?php echo $c['name'] ?></td>
-                    <td><?php echo $c['age'] ?></td>
-                    <td><?php echo $c['gender'] ?></td>
-                    <td><?php echo $c['room'] ?></td>
-                    <td><?php echo $c['address'] ?></td>
-                    <td>
-                        <a href="student_delete.php?id=<?php echo $c['id']; ?>" class="del" onclick="return confirm('Are u sure to delete?')"> del</a>
-                        <a href="student_edit.php?id=<?php echo $c['id']; ?>" class="warning">edit</a>
-                    </td>
-                </tr>
-            <?php
-            }
-            ?>
-        </tbody>
-    </table>
 </center>
