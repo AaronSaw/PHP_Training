@@ -26,27 +26,29 @@ class BlogDao implements BlogDaoInterface
      * @param Request $request request with inputs
      * @return store $blog data
      */
-    public function getStore( $request)
+    public function getStore($request)
     {
         Blog::create([
             "title" => $request->title,
             "description" => $request->description
         ]);
     }
+
     /** To delete $blog data
-      * @param Blog $blog
+     * @param Blog $blog
      * @return delete $blog data
      */
     public function getDelete($blog)
     {
         $blog->delete();
     }
- /**
-   * @param Request $request request with inputs
-   * @param Blog $blog
-   * To updata $blog data
-   * @return update $blog data
-   */
+    
+    /**
+     * @param Request $request request with inputs
+     * @param Blog $blog
+     * To updata $blog data
+     * @return update $blog data
+     */
     public function getUpdate($request, $blog)
     {
         $blog->title = $request->title;

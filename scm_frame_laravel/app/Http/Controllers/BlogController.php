@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Blog;
 use App\Contracts\Services\Blog\BlogServiceInterface;
 use App\Http\Requests\StoreBlogRequest;
@@ -9,20 +10,20 @@ use App\Http\Requests\UpdateBlogRequest;
 
 class BlogController extends Controller
 {
-     /**
-   *blog interface
-   */
-  private $blogInterface;
+    /**
+     *blog interface
+     */
+    private $blogInterface;
 
-  /**
-   * Create a new controller instance.
-   *
-   * @return void
-   */
-  public function __construct(BlogServiceInterface $blogServiceInterface)
-  {
-    $this->blogInterface = $blogServiceInterface;
-  }
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(BlogServiceInterface $blogServiceInterface)
+    {
+        $this->blogInterface = $blogServiceInterface;
+    }
 
     /**
      * Display a listing of the resource.
@@ -88,7 +89,7 @@ class BlogController extends Controller
      */
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        $this->blogInterface->getUpdate($request,$blog);
+        $this->blogInterface->getUpdate($request, $blog);
         return redirect()->route("blog.index")->with("status", "Blog is Updated");
     }
 
@@ -104,4 +105,3 @@ class BlogController extends Controller
         return redirect()->route('blog.index')->with("status", "Blog is deleted");
     }
 }
-

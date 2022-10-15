@@ -23,7 +23,8 @@
                     </div>
                     <div class="text-center">
                         <button class="btn  py-1 px-4  rounded-pill btn-primary">Create</button>
-                        <a href="{{ $_SERVER['PHP_SELF']; }}" class="btn  py-1 px-4  rounded-pill btn-outline-primary" >cancel</a>
+                        <button type="reset">cancel</button>
+                        {{--<a href="{{ $_SERVER['PHP_SELF']; }}" class="btn  py-1 px-4  rounded-pill btn-outline-primary" >cancel</a>--}}
                     </div>
                 </form>
             </div>

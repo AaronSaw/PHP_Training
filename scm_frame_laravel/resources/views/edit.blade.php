@@ -24,6 +24,7 @@
                     </div>
                     <div class="text-center">
                         <button class="btn  rounded-pill py-1 px-4 btn-primary">Update</button>
+                        <button class="btn btn-outline-primary px-4 py-1 rounded-pill" type="reset">cancel</button>
                     </div>
                 </form>
             </div>
