@@ -13,13 +13,28 @@
                 </div>
                 <div class="card border-0">
                     <div class="card-body">
+                        <div class=" d-flex justify-content-between align-items-center">
+                            <a href="{{ route('student.export') }}" class=" btn btn-sm btn-primary">export</a>
+                            <div class="">
+                                <form action="{{ route('student.import') }}" method="POST" enctype="multipart/form-data"
+                                    class=" ">
+                                    @csrf
+                                    <div class=" d-flex align-items-center">
+                                    <input type="file" class="form-control form-control-sm" name="student_file" accept=".xlsx,.xls,csv"
+                                        required>
+                                    <button class="btn btn-primary m-1 btn-sm ">upload</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
                         <table class="table border-0">
                             <thead>
                                 <th>#</th>
                                 <th>Student</th>
                                 <th>Age</th>
-                                <th>Action</th>
                                 <th>Major</th>
+                                <th>Action</th>
                                 <th>Created</th>
                             </thead>
                             <tbody>

@@ -5,12 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Student extends Model
+class Major extends Model
 {
     use HasFactory;
-
-    public function major()
-    {
-        return $this->belongsTo(Major::class);
-    }
+    protected $fillable = ['id','major','created_at'];
 }
