@@ -57,12 +57,11 @@
                                 <th>Action</th>
                                 <th>Created</th>
                             </thead>
-                            <tbody>
+                            <tbody class="tbody">
                                 @forelse ($students as $student)
                                     <tr>
-                                        <td>{{ $student->id }}</td>
                                         <td>{{ $student->name }}</td>
-                                        <td>{{ $student->age }}</td>
+                                        <td> {{ $student->age }}</td>
                                         <td>{{ $student->major }}</td>
                                         <td class="">
                                             <a href="{{ route('student.edit', $student->id) }}"
@@ -76,15 +75,17 @@
                                         </td>
                                         <td>{{ $student->created_at }}</td>
                                     </tr>
-
                                 @empty
                                     <tr>
                                         <td colspan="6" class="text-center text-danger">
                                             <h1>Empty data,Please search again!</h1>
-                                    </tr>
+                                        </td>
                                     </tr>
                                 @endforelse
+
+
                             </tbody>
+
                         </table>
                         <div class="">
                             {{ $students->onEachSide(1)->links() }}
@@ -95,3 +96,5 @@
         </div>
     </div>
 @endsection
+
+

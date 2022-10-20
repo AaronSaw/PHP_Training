@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h1 class=" text-center text-secondary">Student</h1>
-                        <form action="{{ route('student.store') }}" method="POST">
+                        <form action="{{ route('student.store') }}" method="POST" name="myform">
                             @csrf
                             <div class=" form-group mb-2">
                                 <label for="" class=" mb-2 text-secondary h5">Name</label>
@@ -45,11 +45,13 @@
                                     <div class=" invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
+                            <input type="text" class=" form-control" class="getname" name="name">
                             <div class=" d-flex justify-content-between mt-3">
                                 <button class=" btn btn-outline-info px-4  btn-sm " type="reset">cancel</button>
-                                <button class=" btn btn-primary btn-sm float-end px-4 ">create</button>
+                                <button class=" btn btn-primary btn-sm float-end px-4 " type="submit" class="submit">create</button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>

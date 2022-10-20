@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\StudentApiController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,8 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('/api',function(){
+return view('student.api');
+})->name('api');
 Route::resource('/major', MajorController::class);
-Route::resource('/student', StudentController::class);
+Route::resource('/student',StudentController::class);
 
 //excel data major import and export
 Route::get('/Majorexport', [MajorController::class, 'export'])->name('major.export');

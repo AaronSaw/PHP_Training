@@ -16,10 +16,12 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('App\Contracts\Dao\Student\StudentDaoInterface', 'App\Dao\Student\StudentDao');
+        $this->app->bind('App\Contracts\Dao\Api\StudentApiDaoInterface', 'App\Dao\Api\StudentApiDao');
         $this->app->bind('App\Contracts\Dao\Major\MajorDaoInterface', 'App\Dao\Major\MajorDao');
 
 
         $this->app->bind('App\Contracts\Services\Student\StudentServiceInterface', 'App\Services\Student\StudentService');
+        $this->app->bind('App\Contracts\Services\Api\StudentApiServiceInterface', 'App\Services\Api\StudentApiService');
         $this->app->bind('App\Contracts\Services\Major\MajorServiceInterface', 'App\Services\Major\MajorService');
     }
 

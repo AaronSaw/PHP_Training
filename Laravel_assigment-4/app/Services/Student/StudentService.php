@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class StudentService implements StudentServiceInterface
 {
     private $studentDao;
-    public function __construct(StudentDaoInterface $studentDao)
+    public function  __construct(StudentDaoInterface $studentDao)
     {
         $this->studentDao = $studentDao;
     }
@@ -43,7 +43,7 @@ class StudentService implements StudentServiceInterface
     {
         return $this->studentDao->getDelete($student);
     }
-    
+
     /**
      * To Update $student data
      * @param Request $request request with inputs
