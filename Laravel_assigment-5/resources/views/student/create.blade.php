@@ -45,10 +45,11 @@
                                     <div class=" invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <input type="text" class=" form-control" class="getname" name="name">
+
                             <div class=" d-flex justify-content-between mt-3">
                                 <button class=" btn btn-outline-info px-4  btn-sm " type="reset">cancel</button>
-                                <button class=" btn btn-primary btn-sm float-end px-4 " type="submit" class="submit">create</button>
+                                <button class=" btn btn-primary btn-sm float-end px-4 " type="submit"
+                                    class="submit">create</button>
                             </div>
                         </form>
 

@@ -33,7 +33,7 @@
                                                     class="form-control mb-2">
                                                 <input type="number" name="age" id="getage"
                                                     class="form-control mb-2">
-                                                <select name="major" id="getmajor" class="form-select mb-3">
+                                                <select name="major_id" id="getmajor" class="form-select mb-3">
                                                     @foreach (\App\Models\Major::all() as $item)
                                                         <option value="{{ $item->id }}">{{ $item->major }}</option>
                                                     @endforeach
@@ -67,7 +67,7 @@
                                             <input type="text" name="name" id="editname" class="form-control mb-2">
                                             <input type="number" name="age" id="editage" class="form-control mb-2">
                                             <input type="hidden" id="editId" name="updateId">
-                                            <select name="major" id="editmajor" class="form-select mb-3">
+                                            <select name="major_id" id="editmajor" class="form-select mb-3">
                                                 @foreach (\App\Models\Major::all() as $item)
                                                     <option value="{{ $item->id }}">{{ $item->major }}</option>
                                                 @endforeach
@@ -155,7 +155,7 @@
                     data: {
                         name: formdata.get('name'),
                         age: formdata.get('age'),
-                        major_id: formdata.get('major'),
+                        major_id: formdata.get('major_id'),
                         _token: _token
                     },
                     //data:fd,
@@ -199,14 +199,14 @@
                 e.preventDefault();
                 let formdata = new FormData(this);
                 let id = formdata.get('updateId');
-                console.log(formdata.get('major'));
+                console.log(formdata.get('major_id'));
                 $.ajax({
                     type: "put",
                     url: "http://127.0.0.1:8000/api/students/" + id,
                     data: {
                         name: formdata.get('name'),
                         age: formdata.get('age'),
-                        major_id:formdata.get('major')
+                        major_id:formdata.get('major_id')
                     },
                     dataType: "json",
                     success: function(response) {

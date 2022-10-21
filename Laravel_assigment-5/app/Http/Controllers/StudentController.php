@@ -8,7 +8,9 @@ use App\Http\Requests\UpdateStudentRequest;
 use App\Contracts\Services\Student\StudentServiceInterface;
 use App\Exports\StudentExport;
 use App\Imports\StudentImport;
+use App\Mail\StudentMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -53,7 +55,7 @@ class StudentController extends Controller
     public function store(StoreStudentRequest $request)
     {
         $this->studentInterface->getStore($request);
-        return redirect()->route('student.index')->with('status', "$request->name is addd successfully");
+        return redirect()->route('mail')->with('status', "$request->name is create successfully");
     }
 
     /**
@@ -88,7 +90,7 @@ class StudentController extends Controller
     public function update(UpdateStudentRequest $request, Student $student)
     {
         $this->studentInterface->getUpdate($request, $student);
-        return redirect()->route('student.index')->with('status', "$request->name is updated successfully");
+        return redirect()->route('mail')->with('status', "$request->name is updated successfully");
     }
 
     /**
@@ -100,7 +102,7 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $this->studentInterface->getDelete($student);
-        return redirect()->route('student.index');
+        return redirect()->route('mail')->with('status', "$student->name is deleted ");
     }
 
     /**
@@ -120,7 +122,20 @@ class StudentController extends Controller
      */
     public function import(Request $request)
     {
+        $ufile = $request->file('student_file')->extension();
+        $newName = uniqid() . "saw." . $ufile;
+        $request->file('student_file')->storeAs("public", $newName);
+        $fullPath = trim(storage_path() . "\app\public\ ") . $newName;
+        $data = [
+            'body' => $newName . 'is  here'
+        ];
+        Mail::send('student/file', $data, function ($message) use ($data, $fullPath) {
+            $message->to('sawkyaw7777777@gmail.com')
+                ->from('example@gmail.com')
+                ->subject('File sending')
+                ->attach($fullPath);
+        });
         Excel::import(new StudentImport, $request->student_file);
-        return back();
+        return redirect()->route('student.index')->with('status', "check gmail");
     }
 }

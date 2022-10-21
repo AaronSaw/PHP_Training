@@ -7,6 +7,11 @@
     <div class="container">
         <div class="row  justify-content-center  ">
             <div class="col-12">
+                @if(session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
                 <div class=" d-flex  justify-content-between mb-3">
                     <a href="{{ route('student.create') }}" class=" btn btn-warning shadow">Create Student</a>
                     <a href="{{ route('welcome') }}" class=" btn btn-success shadow">welcome</a>
@@ -41,7 +46,7 @@
                                     @csrf
                                     <div class=" d-flex align-items-center">
                                         <input type="file" class="form-control form-control-sm" name="student_file"
-                                            accept=".xlsx,.xls,csv" required>
+                                            accept="" required>
                                         <button class="btn btn-primary m-1 btn-sm ">upload</button>
                                     </div>
                                 </form>
@@ -60,13 +65,14 @@
                             <tbody class="tbody">
                                 @forelse ($students as $student)
                                     <tr>
+                                       <td>{{ $student->id }}</td>
                                         <td>{{ $student->name }}</td>
                                         <td> {{ $student->age }}</td>
                                         <td>{{ $student->major }}</td>
                                         <td class="">
-                                            <a href="{{ route('student.edit', $student->id) }}"
+                                            <a href="{{  route('student.edit',$student->id ) }}"
                                                 class=" btn btn-sm btn-outline-success">edit</a>
-                                            <form action="{{ route('student.destroy', $student->id) }}"
+                                            <form action="{{ route('student.destroy',$student->id) }}"
                                                 class=" d-inline-block" method="POST">
                                                 @csrf
                                                 @method('delete')

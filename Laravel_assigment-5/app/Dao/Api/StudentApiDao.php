@@ -80,8 +80,8 @@ class StudentApiDao implements  StudentApiDaoInterface
         if($request->has('age')){
          $students->age=$request->age;
         }
-       if($request->has('major')){
-         $students->major_id=$request->major;
+       if($request->has('major_id')){
+         $students->major_id=$request->major_id;
        }
         $students->update();
     }

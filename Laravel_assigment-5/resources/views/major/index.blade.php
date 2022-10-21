@@ -7,6 +7,7 @@
     <div class="container">
         <div class="row  justify-content-center  ">
             <div class="col-8">
+                
             <div class=" d-flex  justify-content-between mb-3">
                 <a href="{{ route('major.create') }}" class=" btn btn-warning shadow">Create Major</a>
                 <a href="{{ route('welcome') }}" class=" btn btn-success shadow">welcome</a>

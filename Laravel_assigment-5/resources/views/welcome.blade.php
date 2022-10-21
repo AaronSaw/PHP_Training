@@ -14,6 +14,7 @@
                     </div>
                     <div class=" d-flex justify-content-between mt-3">
                         <a href="{{ route('major.index') }}" class=" btn btn-primary px-4 py-1">Major</a>
+                        <a href="{{ route('mail') }}" class=" btn btn-primary px-4 py-1">mail</a>
                         <a href="{{ route('student.index') }}" class=" btn btn-primary py-1 px-4">Student</a>
                     </div>
 

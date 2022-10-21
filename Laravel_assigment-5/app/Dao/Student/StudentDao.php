@@ -21,7 +21,7 @@ class StudentDao implements StudentDaoInterface
         //search query
         $students =
             DB::table('majors')->select(DB::raw('*'))
-            ->leftJoin('students', 'students.major_id', '=', 'majors.id')
+            ->Join('students', 'students.major_id', '=', 'majors.id')
             ->when(request('name'), function ($q) {
                 $name = request("name");
                 $q->where("name", "like", "%$name%");
@@ -42,6 +42,7 @@ class StudentDao implements StudentDaoInterface
                 $major = request("major");
                 $e->where("major", "like", "%$major%");
             })
+            ->orderBy('students.id', 'desc')
             ->paginate(3);
         return $students;
     }
